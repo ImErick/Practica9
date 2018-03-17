@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Sesion9SQLiteBD</string>
     <string name="header_tittle">SQLite - Productos</string>
+    <string name="header_add_product">Agregar Productos</string>
+    <string name="product_name">Nombre del Producto</string>
+    <string name="product_category">Categoria</string>
+    <string name="product_price">Precio</string>
+    <string name="save_product_button">agregar</string>
 </resources>
