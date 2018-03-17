@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Sesion9SQLiteBD</string>
+    <string name="header_tittle">SQLite - Productos</string>
+</resources>
