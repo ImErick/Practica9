@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 /**
- * Created by erickgarcia on 17/03/18
+ * Created by erickgarcia on 17/03/18:
+ * TODO: mover todos los elementos que tengan que ver con la base de datos a AdminSQL en una chance
  */
 
 public class FragmentListProduct extends Fragment {
