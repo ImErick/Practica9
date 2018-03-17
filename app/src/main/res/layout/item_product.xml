@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_product_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#4d4d4d"> <!--eliminar esto al final-->
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        app:cardCornerRadius="10sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="5sp"
+                android:textSize="20sp"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/textViewProductCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewProductName"
+                android:layout_margin="5sp"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/textViewProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewProductCategory"
+                android:layout_margin="5sp"
+                android:text=""/>
+
+            <ImageButton
+                android:id="@+id/imageButtonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textViewProductPrice"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@+id/imageButtonDelete"
+                android:background="@color/colorLetra"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <ImageButton
+                android:id="@+id/imageButtonDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/imageButtonEdit"
+                android:background="@color/colorLetra"
+                android:layout_marginEnd="12dp"
+                app:srcCompat="@android:drawable/ic_delete" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
