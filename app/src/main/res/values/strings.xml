@@ -6,4 +6,6 @@
     <string name="product_category">Categoria</string>
     <string name="product_price">Precio</string>
     <string name="save_product_button">agregar</string>
+    <string name="header_modify_product">Modificar Productos</string>
+    <string name="btn_modify">modificar</string>
 </resources>

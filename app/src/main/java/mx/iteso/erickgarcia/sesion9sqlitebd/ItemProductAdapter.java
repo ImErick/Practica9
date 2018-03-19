@@ -1,5 +1,8 @@
 package mx.iteso.erickgarcia.sesion9sqlitebd;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
@@ -61,6 +64,7 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
             imageButtonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //TODO: hacer eliminar
                     AdminSQL adminSQL = new AdminSQL(view.getContext(), "test.db", null, 1);
                     SQLiteDatabase db = adminSQL.getWritableDatabase();
                     if (db.delete("product", "productName="+itemProductName.getText().toString(), null) > 0) {
@@ -75,8 +79,11 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
             imageButtonUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: hacer esta mamada y el de eliminar bien (NPI porque no jalan)
-                    Toast.makeText(view.getContext(), "PUM! se actualiza", Toast.LENGTH_SHORT).show();
+                    FragmentManager fragmentManager = ((MainActivity)context).getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    Fragment fragment = new FragmentEditProduct();
+                    fragmentTransaction.replace(R.id.main_fragment, fragment);
+                    fragmentTransaction.commit();
                 }
             });
         }
