@@ -1,6 +1,8 @@
 package mx.iteso.erickgarcia.sesion9sqlitebd;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -51,6 +53,11 @@ public class FragmentEditProduct extends Fragment {
                     if (db.update("product", contentValues,
                             "productName='"+value+"'", null) > 0) {
                         Toast.makeText(getActivity(), "register edited!", Toast.LENGTH_SHORT).show();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment fragment = new FragmentListProduct();
+                        fragmentTransaction.replace(R.id.main_fragment, fragment);
+                        fragmentTransaction.commit();
                     } else
                         Toast.makeText(getActivity(), "unable to edit", Toast.LENGTH_SHORT).show();
                     db.close();

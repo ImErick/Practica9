@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 db.execSQL("DELETE FROM product");
                 db.close();
                 Toast.makeText(MainActivity.this, "Delete all information sucessfull", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment fragment = new FragmentAddUProduct();
+                fragmentTransaction.replace(R.id.main_fragment, fragment);
+                fragmentTransaction.commit();
             }
         });
     }

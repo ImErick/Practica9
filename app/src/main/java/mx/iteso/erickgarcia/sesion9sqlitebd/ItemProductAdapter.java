@@ -42,7 +42,7 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.itemProductName.setText(itemProductArrayList.get(position).getProductName());
         holder.itemProductCategory.setText(itemProductArrayList.get(position).getProductCategory());
-        holder.itemProductPrice.setText(String.valueOf(itemProductArrayList.get(position).getProductPrice()));
+        holder.itemProductPrice.setText(String.format("$%s", String.valueOf(itemProductArrayList.get(position).getProductPrice())));
     }
 
     @Override
@@ -86,7 +86,7 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
                     Bundle bundle = new Bundle();
                     bundle.putString("productName", itemProductName.getText().toString());
                     bundle.putString("productCategory", itemProductCategory.getText().toString());
-                    bundle.putString("productPrice", itemProductPrice.getText().toString());
+                    bundle.putString("productPrice", itemProductPrice.getText().toString().substring(1));
                     FragmentManager fragmentManager = ((MainActivity)context).getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     Fragment fragment = new FragmentEditProduct();
