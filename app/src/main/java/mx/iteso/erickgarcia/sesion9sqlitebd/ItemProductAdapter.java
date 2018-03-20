@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,9 +80,14 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
             imageButtonUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("productName", itemProductName.getText().toString());
+                    bundle.putString("productCategory", itemProductCategory.getText().toString());
+                    bundle.putString("productPrice", itemProductPrice.getText().toString());
                     FragmentManager fragmentManager = ((MainActivity)context).getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     Fragment fragment = new FragmentEditProduct();
+                    fragment.setArguments(bundle);
                     fragmentTransaction.replace(R.id.main_fragment, fragment);
                     fragmentTransaction.commit();
                 }
