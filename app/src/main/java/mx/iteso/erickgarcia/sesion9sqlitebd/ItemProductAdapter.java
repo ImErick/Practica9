@@ -65,12 +65,15 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
             imageButtonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: hacer eliminar
                     AdminSQL adminSQL = new AdminSQL(view.getContext(), "test.db", null, 1);
                     SQLiteDatabase db = adminSQL.getWritableDatabase();
-                    if (db.delete("product", "productName="+itemProductName.getText().toString(), null) > 0) {
+                    if (db.delete("product", "productName='"+itemProductName.getText().toString()+"'", null) > 0) {
                         Toast.makeText(view.getContext(), "product deleted", Toast.LENGTH_SHORT).show();
-                        //notifyDataSetChanged();
+                        FragmentManager fragmentManager = ((MainActivity)context).getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment fragment = new FragmentListProduct();
+                        fragmentTransaction.replace(R.id.main_fragment, fragment);
+                        fragmentTransaction.commit();
                     } else
                         Toast.makeText(view.getContext(), "no me deja eliminar la wea", Toast.LENGTH_SHORT).show();
                     db.close();
