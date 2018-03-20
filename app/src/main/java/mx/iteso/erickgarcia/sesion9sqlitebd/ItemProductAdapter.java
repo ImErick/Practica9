@@ -42,7 +42,7 @@ public class ItemProductAdapter extends RecyclerView.Adapter <ItemProductAdapter
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.itemProductName.setText(itemProductArrayList.get(position).getProductName());
         holder.itemProductCategory.setText(itemProductArrayList.get(position).getProductCategory());
-        holder.itemProductPrice.setText("$" + String.valueOf(itemProductArrayList.get(position).getProductPrice()));
+        holder.itemProductPrice.setText(String.valueOf(itemProductArrayList.get(position).getProductPrice()));
     }
 
     @Override

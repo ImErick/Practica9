@@ -34,10 +34,11 @@ public class FragmentEditProduct extends Fragment {
         modifyTextProductCategory.setText(getArguments().getString("productCategory"));
         modifyTextProductPrice.setText(getArguments().getString("productPrice"));
 
+        final String value =  modifyTextProductName.getText().toString();
+
         button_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("que contiene?", modifyTextProductName.getText().toString());
                 AdminSQL adminSQL = new AdminSQL(getActivity(), "test.db", null, 1);
                 SQLiteDatabase db = adminSQL.getWritableDatabase();
                 if (!modifyTextProductName.getText().toString().matches("")
@@ -47,8 +48,11 @@ public class FragmentEditProduct extends Fragment {
                     contentValues.put("productName", modifyTextProductName.getText().toString());
                     contentValues.put("productCategory", modifyTextProductCategory.getText().toString());
                     contentValues.put("productPrice", modifyTextProductPrice.getText().toString());
-                    db.update("product", contentValues, "productName="+modifyTextProductName.getText().toString(), null);
-                    Toast.makeText(getActivity(), "register edited!", Toast.LENGTH_SHORT).show();
+                    if (db.update("product", contentValues,
+                            "productName='"+value+"'", null) > 0) {
+                        Toast.makeText(getActivity(), "register edited!", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getActivity(), "unable to edit", Toast.LENGTH_SHORT).show();
                     db.close();
 
                 } else
